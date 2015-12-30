@@ -1,19 +1,38 @@
 nav {
   text-align: left;
-  height: 53px;
+  height: 56px;
+  transition: all 0.2s ease-in-out;
 
-  h6 {
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  h5 {
     color: white;
-    padding-left: 50px;
+    padding: 10px 0 10px 50px;
+    margin: 0;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {background: @olive;}
   }
 
   .navs {
-    a {
-      color: white;
+    padding: 16px 0;
+  }
 
-      &:hover {
-        color: white;
-      }
+  a {
+    color: white;
+    padding: 18px 20px;
+
+    &:hover {
+      color: white;
+      background: @olive;
+    }
+  }
+
+  @media (min-width: 550px) {
+    .navs {
+      margin-left: 0;
     }
   }
 }

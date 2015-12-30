@@ -887,17 +887,38 @@ header a,
 }
 nav {
   text-align: left;
-  height: 53px;
+  height: 56px;
+  -webkit-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
 }
-nav h6 {
-  color: white;
-  padding-left: 50px;
+nav:hover {
+  background-color: rgba(0, 0, 0, 0.3);
 }
-nav .navs a {
+nav h5 {
   color: white;
+  padding: 10px 0 10px 50px;
+  margin: 0;
+  -webkit-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
 }
-nav .navs a:hover {
+nav h5:hover {
+  background: #3d9970;
+}
+nav .navs {
+  padding: 16px 0;
+}
+nav a {
   color: white;
+  padding: 18px 20px;
+}
+nav a:hover {
+  color: white;
+  background: #3d9970;
+}
+@media (min-width: 550px) {
+  nav .navs {
+    margin-left: 0;
+  }
 }
 img {
   vertical-align: middle;
@@ -942,6 +963,14 @@ footer {
 }
 .social a .fa-google-plus {
   color: #dd4b39;
+}
+.copyright {
+  margin: 40px 0 20px;
+}
+.signature {
+  color: #777777 !important;
+  font-size: 11px;
+  margin: 0 20px;
 }
 .button,
 button,
@@ -1017,7 +1046,7 @@ header .gradient {
   background-color: rgba(0, 0, 0, 0.4);
 }
 header .title {
-  padding: 300px 0 0;
+  padding: 250px 0 0;
 }
 header h1,
 header h2,
