@@ -1,0 +1,29 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Less mixins.
+// -----------------------------------------------------------------------------
+
+.size (@width: 400, @height: 200) {
+	width: @width * 1px;
+	height: @height * 1px;
+}
+
+.square (@value: 100) {
+	.size(@value, @value);
+}
+
+.center-block () {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.clearfix () {
+	*zoom: 1;
+	&:before, &:after {
+		content: "";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}
