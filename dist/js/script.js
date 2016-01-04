@@ -4,6 +4,6 @@ $(function dynamicHeader() {
   var height = $(window).height();
 
   if(!isMobile && height > 750) {
-    $('header').css({'height': height + 10 + "px"});
+    $('header').css({'height': height + 2 + "px"});
   }
 });
