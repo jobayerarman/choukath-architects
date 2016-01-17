@@ -3,8 +3,10 @@ module.exports = function(grunt) {
   // Load the plugins
   require('load-grunt-tasks')(grunt);
 
-  // constants for various paths and files to be used by the task configuration
+  //mozjpeg is a production-quality JPEG encoder that improves compression while maintaining compatibility with the vast majority of deployed decoders
+  var mozjpeg = require('imagemin-mozjpeg');
 
+  // constants for various paths and files to be used by the task configuration
   /* Source Directories */
   // Source Base
   var SRC_DIR         = "src/";
@@ -58,7 +60,7 @@ module.exports = function(grunt) {
     // clean each destination before output
     clean: {
       html: ["dist/index.html", "dist/pages/*.html"],
-      css: [SRC_FILES_CSS],
+      css: [SRC_FILES_CSS, BUILD_FILES_CSS],
       js : [BUILD_FILES_JS]
     },
 
@@ -100,15 +102,7 @@ module.exports = function(grunt) {
       }
     },
 
-    // only process LESS to CSS
-    less: {
-      build: {
-        files: {
-          'src/css/style.css': SRC_FILES_LESS
-        }
-      }
-    },
-
+    // remove unused CSS selector
     uncss: {
       build: {
         files: [
@@ -123,23 +117,7 @@ module.exports = function(grunt) {
       }
     },
 
-    // Minifies or compress CSS
-    cssmin: {
-      options: {
-        keepSpecialComments: 0
-      },
-      build: {
-        files: {
-          'dist/css/style.min.css': 'src/css/style.css'
-        }
-      },
-      dist: {
-        files: {
-          'dist/css/style.uncss.css': 'dist/css/style.uncss.css'
-        }
-      }
-    },
-
+    // Validate files with JSHint
     jshint: {
       options: {
         reporter: require('jshint-stylish'),
@@ -152,6 +130,7 @@ module.exports = function(grunt) {
       afterconcat: [BUILD_FILE_JS]
     },
 
+    // Concatenate javascript files
     concat: {
       options: {
         seperator: ";"
@@ -162,10 +141,29 @@ module.exports = function(grunt) {
       }
     },
 
+    // Minify files with UglifyJS
     uglify: {
       build: {
         files: {
           'dist/js/script.min.js': 'dist/js/script.js'
+        }
+      }
+    },
+
+    // Minify images
+    imagemin: {
+      dynamic: {
+        files: [{
+          expand: true,
+          cwd: 'src/images/',
+          src: ['**/*.{png,jpg,gif}'],
+          dest: 'dist/images/'
+        }],
+        options: {
+          optimizationLevel: 3,
+          progressive: true,
+          svgoPlugins: [{ removeViewBox: false }],
+          use: [mozjpeg({quality: 70})]
         }
       }
     },
