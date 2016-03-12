@@ -1,15 +1,7 @@
-## Build System Boilerplate using LESS
-Template for front-end development.
+## Demo Architect Website
 
-Clone or download as zip.
-
-cd into the directory.
-
-run `npm install`
-
-run grunt task `grunt` default to watch less & js
-
-start developing
+[![Dependency Status](https://david-dm.org/jobayerarman/choukath-architects.svg)](https://david-dm.org/jobayerarman/choukath-architects)
+[![devDependency Status](https://david-dm.org/jobayerarman/choukath-architects/dev-status.svg)](https://david-dm.org/jobayerarman/choukath-architects#info=devDependencies)
 
 ##Vendor
 1. Skeleton
