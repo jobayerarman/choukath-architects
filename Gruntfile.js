@@ -9,24 +9,24 @@ module.exports = function(grunt) {
   // constants for various paths and files to be used by the task configuration
   /* Source Directories */
   // Source Base
-  var SRC_DIR         = "src/";
+  var SRC_DIR            = "src/";
 
   // HTML base source
-  var SRC_DIR_HTML    = SRC_DIR + "site/";
+  var SRC_DIR_HTML       = SRC_DIR + "site/";
   // Include base source
-  var SRC_DIR_INCLUDE = SRC_DIR_HTML + "include";
+  var SRC_DIR_INCLUDE    = SRC_DIR_HTML + "include";
   // Source HTML files
-  var SRC_FILES_HTML  = [SRC_DIR_HTML + "*.html", SRC_DIR_HTML + "pages/*.html", SRC_DIR_HTML + "include/*.html"];
+  var SRC_FILES_HTML     = [SRC_DIR_HTML + "*.html", SRC_DIR_HTML + "pages/*.html", SRC_DIR_HTML + "include/*.html"];
 
-  // JavaScript source files
-  var SRC_DIR_JS      = SRC_DIR + "js/";
-  var SRC_DIR_CSS     = SRC_DIR + "css/";
-  var SRC_DIR_LESS    = SRC_DIR + "less/";
+  // Source Directory
+  var SRC_DIR_JS         = SRC_DIR + "js/";
+  var SRC_DIR_CSS        = SRC_DIR + "css/";
+  var SRC_DIR_LESS       = SRC_DIR + "less/";
 
-  // CSS source files
-  var SRC_FILES_JS    = SRC_DIR_JS   + "*.js";
-  var SRC_FILES_CSS   = SRC_DIR_CSS  + "*.css";
-  var SRC_FILES_LESS  = SRC_DIR_LESS + "*.less";
+  // Source files
+  var SRC_FILES_JS       = SRC_DIR_JS   + "*.js";
+  var SRC_FILES_CSS      = SRC_DIR_CSS  + "*.css";
+  var SRC_FILES_LESS_ALL = SRC_DIR_LESS + "**/*.less";
 
   // Browser prefix for Autoprefixing
   var AP_BROWSERS = [
@@ -59,7 +59,7 @@ module.exports = function(grunt) {
 
     // clean each destination before output
     clean: {
-      html: ["dist/index.html", "dist/pages/*.html"],
+      html: ["dist/**/*.html"],
       css: [SRC_FILES_CSS, BUILD_FILES_CSS],
       js : [BUILD_FILES_JS]
     },
@@ -72,8 +72,19 @@ module.exports = function(grunt) {
         dest: BUILD_DIR,
         options: {
           flatten: true,
+          duplicates: false,
           includePath: SRC_DIR_INCLUDE
         }
+      }
+    },
+
+    // Changes the path using grunt-processhtml
+    processhtml: {
+      dist: {
+        expand: true,
+        cwd: BUILD_DIR,
+        src: ['**/*.html'],
+        dest: BUILD_DIR
       }
     },
 
@@ -94,11 +105,11 @@ module.exports = function(grunt) {
 
     // copy CSS from source directory to dist folder
     copy: {
-      build: {
+      styles: {
+        expand: true,
         cwd: SRC_DIR_CSS,
         src: ['*.css'],
-        dest: BUILD_DIR_CSS,
-        expand: true
+        dest: BUILD_DIR_CSS
       }
     },
 
@@ -169,6 +180,12 @@ module.exports = function(grunt) {
     },
 
     watch: {
+      configFiles: {
+        options: {
+          reload: true
+        },
+        files: [ 'Gruntfile.js'],
+      },
       html: {
         options: {
           spawn: false
@@ -180,7 +197,7 @@ module.exports = function(grunt) {
         options: {
           spawn: false
         },
-        files: ['src/less/*.less', 'src/less/**/*.less'],
+        files: [SRC_FILES_LESS_ALL],
         tasks: ['cssflow', 'copy']
       },
       scripts: {
@@ -194,7 +211,15 @@ module.exports = function(grunt) {
   });
 
   //Default Task(s)
-  grunt.registerTask('default', ['includes', 'clean:css', 'cssflow', 'copy', 'watch']);
+  grunt.registerTask('default', ['includes', 'clean:css', 'cssflow', 'copy:styles']);
 
+  // Production tasks
+  grunt.registerTask('dev', ['includes', 'clean:css', 'cssflow', 'copy:styles', 'watch']);
+  // Build Tasks changes path variables for uploading
+  grunt.registerTask('build', ['includes', 'processhtml']);
+
+  // Image compressing task
+  grunt.registerTask('compress', ['newer:imagemin']);
+  // Remove unused css class
   grunt.registerTask('cleancss', ['uncss', 'cssmin:dist']);
 };

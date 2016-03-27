@@ -717,7 +717,7 @@ body {
   font-size: 1.5em;
   line-height: 1.6;
   color: #333333;
-  background-color: #ffffff;
+  background-color: #FFF;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
 }
@@ -873,7 +873,7 @@ a {
 }
 a:hover,
 a:focus {
-  color: #0074d9;
+  color: #0074D9;
 }
 header,
 .header {
@@ -885,34 +885,43 @@ header a,
   margin: 50px 0;
 }
 nav {
-  text-align: left;
   height: 56px;
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  width: 100%;
   -webkit-transition: all 0.2s ease-in-out;
           transition: all 0.2s ease-in-out;
+  text-align: left;
 }
 nav:hover {
   background-color: rgba(0, 0, 0, 0.3);
 }
 nav h5 {
-  color: white;
-  padding: 10px 0 10px 50px;
   margin: 0;
+  padding: 10px 0 10px 50px;
   -webkit-transition: all 0.2s ease-in-out;
           transition: all 0.2s ease-in-out;
+  color: white;
 }
 nav h5:hover {
-  background: #3d9970;
+  background: #3D9970;
 }
 nav .navs {
   padding: 16px 0;
 }
 nav a {
-  color: white;
   padding: 18px 20px;
-}
-nav a:hover {
   color: white;
-  background: #3d9970;
+}
+nav a:hover,
+nav a:active {
+  color: white;
+  background: #3D9970;
+}
+nav a:focus {
+  color: white;
 }
 @media (min-width: 550px) {
   nav .navs {
@@ -933,8 +942,8 @@ img {
 .img-thumbnail {
   padding: 4px;
   line-height: 1.42857143;
-  background-color: #ffffff;
-  border: 1px solid #dddddd;
+  background-color: #FFF;
+  border: 1px solid #ddd;
   border-radius: 4px;
   display: inline-block;
   width: 100%;
@@ -955,13 +964,13 @@ footer {
   margin-right: 0;
 }
 .social a .fa-facebook {
-  color: #3b5998;
+  color: #3B5998;
 }
 .social a .fa-twitter {
-  color: #00aced;
+  color: #00ACED;
 }
 .social a .fa-google-plus {
-  color: #dd4b39;
+  color: #DD4B39;
 }
 .copyright {
   margin: 40px 0 20px;

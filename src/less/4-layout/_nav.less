@@ -3,34 +3,47 @@
 // -----------------------------------------------------------------------------
 
 nav {
-  text-align: left;
   height: 56px;
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  width: 100%;
+
   transition: all 0.2s ease-in-out;
+  text-align: left;
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.3);
   }
 
   h5 {
-    color: white;
-    padding: 10px 0 10px 50px;
     margin: 0;
+    padding: 10px 0 10px 50px;
+
     transition: all 0.2s ease-in-out;
 
-    &:hover {background: @olive;}
-  }
+    color: white;
 
+    &:hover {
+      background: @olive;
+    }
+  }
   .navs {
     padding: 16px 0;
   }
-
   a {
-    color: white;
     padding: 18px 20px;
 
-    &:hover {
+    color: white;
+
+    &:hover,
+    &:active  {
       color: white;
       background: @olive;
+    }
+    &:focus {
+      color: white;
     }
   }
 
