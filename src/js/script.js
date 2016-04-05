@@ -17,9 +17,11 @@ $(function navOpacity() {
 
   $(window).scroll(function() {
     if ($(this).scrollTop() > (height - 66)) {
-      nav.css({'background-color': 'rgba(0, 0, 0, 0.6)'});
+      nav.css({'background-color': '#fff','color': '#000'});
+      nav.find('a').css({'color': '#000'});
     } else{
-      nav.css({'background': 'transparent'});
+      nav.css({'background': 'transparent','color': '#fff'});
+      nav.find('a').css({'color': '#fff'});
     }
   });
 });

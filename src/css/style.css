@@ -754,6 +754,7 @@ body {
 .large,
 .bigger,
 .big,
+.medium,
 h1,
 h2,
 h3,
@@ -885,43 +886,57 @@ header a,
   margin: 50px 0;
 }
 nav {
-  height: 56px;
   position: fixed;
   z-index: 99;
   top: 0;
   left: 0;
   width: 100%;
+  height: 56px;
   -webkit-transition: all 0.2s ease-in-out;
           transition: all 0.2s ease-in-out;
   text-align: left;
+  color: #FFFFFF;
+  overflow: hidden;
 }
 nav:hover {
   background-color: rgba(0, 0, 0, 0.3);
 }
-nav h5 {
+nav .brand {
+  height: 56px;
+  overflow: hidden;
+}
+nav .brand a {
+  display: inline-block;
+  width: 100%;
+  padding: 10px 0 12px 120px;
+}
+nav .bigger {
   margin: 0;
-  padding: 10px 0 10px 50px;
   -webkit-transition: all 0.2s ease-in-out;
           transition: all 0.2s ease-in-out;
-  color: white;
+  color: inherit;
 }
-nav h5:hover {
+nav .bigger:hover {
   background: #3D9970;
 }
 nav .navs {
   padding: 16px 0;
+  color: #FFFFFF;
 }
 nav a {
-  padding: 18px 20px;
-  color: white;
+  margin-right: -4px;
+  padding: 20px 20px 18px;
 }
 nav a:hover,
 nav a:active {
-  color: white;
+  color: inherit;
   background: #3D9970;
 }
 nav a:focus {
-  color: white;
+  color: inherit;
+}
+nav .medium {
+  color: #fff;
 }
 @media (min-width: 550px) {
   nav .navs {
