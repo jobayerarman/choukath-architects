@@ -971,22 +971,6 @@ footer {
   padding: 40px 0;
   background: #eeeeee;
 }
-.social a {
-  margin-right: 25px;
-  padding: 5px;
-}
-.social a:last-child {
-  margin-right: 0;
-}
-.social a .fa-facebook {
-  color: #3B5998;
-}
-.social a .fa-twitter {
-  color: #00ACED;
-}
-.social a .fa-google-plus {
-  color: #DD4B39;
-}
 .copyright {
   margin: 40px 0 20px;
 }
@@ -1055,6 +1039,30 @@ input[type="button"].button-primary:focus {
   color: #FFF;
   background-color: #1EAEDB;
   border-color: #1EAEDB;
+}
+.social a {
+  padding: 5px;
+}
+.social a:not(:last-child) {
+  margin-right: 25px;
+}
+.social a .fa-facebook {
+  color: #3B5998;
+}
+.social a .fa-twitter {
+  color: #00ACED;
+}
+.social a .fa-google-plus {
+  color: #DD4B39;
+}
+.social .facebook:hover {
+  border-bottom: 2px solid #3B5998;
+}
+.social .twitter:hover {
+  border-bottom: 2px solid #00ACED;
+}
+.social .google:hover {
+  border-bottom: 2px solid #DD4B39;
 }
 header {
   margin-top: 0;

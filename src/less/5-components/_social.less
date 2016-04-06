@@ -1,0 +1,33 @@
+.social {
+  a {
+    padding: 5px;
+
+    &:not(:last-child) {
+      margin-right: 25px;
+    }
+    .fa-facebook {
+      color: @facebook;
+    }
+    .fa-twitter {
+      color: @twitter;
+    }
+    .fa-google-plus {
+      color: @googleplus;
+    }
+  }
+  .facebook {
+    &:hover {
+      border-bottom: 2px solid @facebook;
+    }
+  }
+  .twitter {
+    &:hover {
+      border-bottom: 2px solid @twitter;
+    }
+  }
+  .google {
+    &:hover {
+      border-bottom: 2px solid @googleplus;
+    }
+  }
+}
